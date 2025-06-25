@@ -1,0 +1,27 @@
+inventory = {
+    1: {
+        "name": "Milk",
+        "price": 3.99,
+        "type": "low fat"
+    },
+    2: {
+        "name": "Bread",
+        "price": 2.49,
+        "type": "whole grain"
+    },
+    3: {
+        "name": "Eggs",
+        "price": 4.29,
+        "type": "free range"
+    },
+    4: {
+        "name": "Cheese",
+        "price": 5.99,
+        "type": "cheddar"
+    },
+    5: {
+        "name": "Apples",
+        "price": 3.50,
+        "type": "Granny Smith"
+    }
+}
