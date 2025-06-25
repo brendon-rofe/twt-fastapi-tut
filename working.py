@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI
 from inventory_data import inventory
 
 app = FastAPI()
