@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path
 from inventory_data import inventory
 
 app = FastAPI()
@@ -7,4 +7,6 @@ app = FastAPI()
 def home():
   return {"Data": "Hello World"}
 
-
+@app.get("/item/{item_id}")
+def get_item(item_id: int):
+  return inventory[item_id]
