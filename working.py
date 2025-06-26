@@ -27,4 +27,6 @@ def get_by_name(name: str = None):
 
 @app.post("/create-item")
 def create_item(item: Item):
-  return item
+  new_id = len(inventory) + 1;
+  inventory.update({new_id: item})
+  return inventory
