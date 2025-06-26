@@ -50,3 +50,12 @@ def update_item(item_id: int, item: UpdateItem):
     
     with open("inventory_data.py", "w") as f:
       f.write(f"inventory = {inventory}")
+
+@app.delete("/delete-item/{item_id}")
+def delete_item(item_id: int):
+  if item_id in inventory:
+    del inventory[item_id]
+    with open("inventory_data.py", "w") as f:
+      f.write(f"inventory = {inventory}")
+  else:
+    return { "Error": "Item ID does not exist" }
