@@ -17,3 +17,7 @@ def get_by_name(name: str = None):
     if inventory[item_id]["name"] == name:
       return inventory[item_id]
   return {"Data": "Not found"}
+
+@app.post("/create-item")
+def create_item():
+  return
