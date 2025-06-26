@@ -37,5 +37,15 @@ def create_item(item: Item):
     f.write(f"inventory = {inventory}")
 
 @app.put("/update-item/{item_id}")
-def update_item(item_id: int):
-  return
+def update_item(item_id: int, item: Item):
+  if item_id not in inventory:
+    return { "Error": "Item ID does not exist" }
+  else:
+    inventory[item_id] = {
+      "name": item.name,
+      "price": item.price,
+      "type": item.price
+    }
+    
+    with open("inventory_data.py", "w") as f:
+      f.write(f"inventory = {inventory}")
