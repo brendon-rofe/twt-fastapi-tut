@@ -10,6 +10,11 @@ class Item(BaseModel):
   price: float
   type: Optional[str] = None
 
+class UpdateItem(BaseModel):
+  name: Optional[str] = None
+  price: Optional[float] = None
+  type: Optional[str] = None
+
 @app.get("/")
 def home():
   return {"Data": "Hello World"}
@@ -37,7 +42,7 @@ def create_item(item: Item):
     f.write(f"inventory = {inventory}")
 
 @app.put("/update-item/{item_id}")
-def update_item(item_id: int, item: Item):
+def update_item(item_id: int, item: UpdateItem):
   if item_id not in inventory:
     return { "Error": "Item ID does not exist" }
   else:
