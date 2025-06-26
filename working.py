@@ -35,3 +35,7 @@ def create_item(item: Item):
   }
   with open("inventory_data.py", "w") as f:
     f.write(f"inventory = {inventory}")
+
+@app.put("/update-item/{item_id}")
+def update_item(item_id: int):
+  return
