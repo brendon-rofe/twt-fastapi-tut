@@ -28,5 +28,10 @@ def get_by_name(name: str = None):
 @app.post("/create-item")
 def create_item(item: Item):
   new_id = len(inventory) + 1;
-  inventory.update({new_id: item})
-  return inventory
+  inventory[new_id] = {
+    "name": item.name,
+    "price": item.price,
+    "type": item.price
+  }
+  with open("inventory_data.py", "w") as f:
+    f.write(f"inventory = {inventory}")
