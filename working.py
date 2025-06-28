@@ -23,6 +23,10 @@ def home():
 def get_item(item_id: int):
   return inventory[item_id]
 
+@app.get("/items")
+def get_all_items():
+  return inventory
+
 @app.get("/get-by-name")
 def get_by_name(name: str = None):
   for item_id in inventory:
