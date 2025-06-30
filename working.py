@@ -1,7 +1,12 @@
 from fastapi import FastAPI
-import inventory_data
+import json
 from typing import Optional
 from pydantic import BaseModel
+
+inventory = {}
+
+with open("inventory_data.json") as f:
+  inventory = json.load(f)
 
 app = FastAPI()
 
