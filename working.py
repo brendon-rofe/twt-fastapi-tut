@@ -25,7 +25,7 @@ def home():
   return {"Data": "Hello World"}
 
 @app.get("/item/{item_id}")
-def get_item(item_id: int):
+def get_item(item_id: str):
   return inventory[item_id]
 
 @app.get("/items")
@@ -51,7 +51,7 @@ def create_item(item: Item):
     f.write(f"inventory = {inventory}")
 
 @app.put("/update-item/{item_id}")
-def update_item(item_id: int, item: UpdateItem):
+def update_item(item_id: str, item: UpdateItem):
   if item_id not in inventory:
     return { "Error": "Item ID does not exist" }
   else:
@@ -61,7 +61,7 @@ def update_item(item_id: int, item: UpdateItem):
       f.write(f"inventory = {inventory}")
 
 @app.delete("/delete-item/{item_id}")
-def delete_item(item_id: int):
+def delete_item(item_id: str):
   if item_id in inventory:
     del inventory[item_id]
     with open("inventory_data.py", "w") as f:
