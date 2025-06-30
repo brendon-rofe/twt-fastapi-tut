@@ -42,13 +42,14 @@ def get_by_name(name: str = None):
 @app.post("/create-item")
 def create_item(item: Item):
   new_id = len(inventory) + 1;
+  new_id = str(new_id)
   inventory[new_id] = {
     "name": item.name,
     "price": item.price,
     "type": item.price
   }
-  with open("inventory_data.py", "w") as f:
-    f.write(f"inventory = {inventory}")
+  with open("inventory_data.json") as f:
+    json.dump(inventory, f)
 
 @app.put("/update-item/{item_id}")
 def update_item(item_id: str, item: UpdateItem):
@@ -57,14 +58,14 @@ def update_item(item_id: str, item: UpdateItem):
   else:
     inventory[item_id].update(item)
     
-    with open("inventory_data.py", "w") as f:
-      f.write(f"inventory = {inventory}")
+    with open("inventory_data.json") as f:
+      json.dump(inventory, f)
 
 @app.delete("/delete-item/{item_id}")
 def delete_item(item_id: str):
   if item_id in inventory:
     del inventory[item_id]
-    with open("inventory_data.py", "w") as f:
-      f.write(f"inventory = {inventory}")
+    with open("inventory_data.json") as f:
+      json.dump(inventory, f)
   else:
     return { "Error": "Item ID does not exist" }
